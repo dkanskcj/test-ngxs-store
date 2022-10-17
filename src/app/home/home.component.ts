@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Select, Store, UpdateState } from '@ngxs/store';
+import { tap, Observable } from 'rxjs';
+import { AuthActions } from '../auth/state/auth.actions';
 import { AuthFacade } from '../auth/state/auth.facade';
+import { AuthModel, AuthState } from '../auth/state/auth.state';
+
 
 @Component({
   selector: 'app-home',
@@ -11,8 +16,18 @@ export class HomeComponent implements OnInit {
   auth$ = this.authFacade.auth$;
   isLoggedIn$ = this.authFacade.isLoggedIn$.pipe(tap(isLoggedIn => console.log('isLoggedIn', isLoggedIn)))
 
+  @Select(AuthState) user$:Observable<AuthModel>;
+
+  createForm = new FormGroup({
+    name: new FormControl(null),
+    password: new FormControl(null),
+    isLoggedIn: new FormControl(false)
+  });
+
   constructor(
-    private authFacade: AuthFacade
+    private authFacade: AuthFacade,
+    private authState: AuthState,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
@@ -20,7 +35,15 @@ export class HomeComponent implements OnInit {
 
 
   login() {
-    this.authFacade.login();
+    const body = this.createForm.getRawValue();
+    console.log(body)
+    
+    this.store.dispatch(new AuthActions.getInputs(body));
+    // this.authFacade.login();
+
+    this.user$.subscribe(res=>{
+      console.log(res, 'tt');
+    })
   }
   logout(){
     this.authFacade.logout();

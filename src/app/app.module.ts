@@ -9,6 +9,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { NoSoupForYouComponent } from './pages/no-soup-for-you/no-soup-for-you.component';
 import { FirstPageComponent } from './pages/first-page/first-page.component';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     NgxsModule.forRoot(),
-    AuthModule
+    AuthModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

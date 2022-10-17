@@ -4,6 +4,7 @@ import { NgxsModule } from '@ngxs/store';
 import { AuthState } from './state/auth.state';
 import { AuthFacade } from './state/auth.facade';
 import { LoggedInGuard } from './state/logged-in.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,7 @@ import { LoggedInGuard } from './state/logged-in.guard';
   ],
   providers: [
     AuthFacade,
-    LoggedInGuard
+    LoggedInGuard,
   ]
 })
 export class AuthModule { }

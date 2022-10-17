@@ -8,7 +8,7 @@ import { AuthState, AuthModel } from "./auth.state";
 export class AuthFacade {
     @Select(AuthState) auth$: Observable<AuthModel>;
     @Select(state => state.auth.isLoggedIn) isLoggedIn$: Observable<boolean>;
-
+    
     constructor(
         private store: Store
     ){}
