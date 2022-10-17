@@ -1,11 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Action, State, StateContext, StateToken } from "@ngxs/store";
+import { Action, Selector, State, StateContext, StateToken } from "@ngxs/store";
+import { Observable } from "rxjs";
 import { CommentService } from "src/app/service/comment/comment.service";
 import { AuthActions } from "./auth.actions";
-type user = {
-    name: string,
-    password: string;
-}
 
 
 export interface AuthModel {
@@ -26,10 +23,18 @@ export const AUTH_STATE_TOKEN = new StateToken<AuthModel>('auth');
 })
 @Injectable()
 export class AuthState {
+
     
     constructor(
-        private commentService: CommentService
     ) { }
+
+    @Selector()
+    getUserName(state: AuthModel){
+        console.log(state.name)
+        return state.name;
+    }
+
+
 
     @Action(AuthActions.getInputs)
     getInputs(state: StateContext<AuthModel>, formData: any) {

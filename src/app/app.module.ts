@@ -11,6 +11,7 @@ import { FirstPageComponent } from './pages/first-page/first-page.component';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxsStoragePluginModule.forRoot({
+      key: 'auth'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

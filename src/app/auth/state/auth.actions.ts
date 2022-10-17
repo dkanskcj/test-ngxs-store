@@ -13,4 +13,11 @@ export namespace AuthActions{
         ){}
         static readonly type = '[Auth] getInputs';
     }
+
+    export class setUserName{
+        constructor(
+            public name: string
+        ){}
+        static readonly type = '[Storage] SetUsetName'
+    }
 }

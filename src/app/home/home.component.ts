@@ -36,13 +36,13 @@ export class HomeComponent implements OnInit {
 
   login() {
     const body = this.createForm.getRawValue();
-    console.log(body)
+    // console.log(body)
     
     this.store.dispatch(new AuthActions.getInputs(body));
     // this.authFacade.login();
 
     this.user$.subscribe(res=>{
-      console.log(res, 'tt');
+      // console.log(res, 'tt');
     })
   }
   logout(){
