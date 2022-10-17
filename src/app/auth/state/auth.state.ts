@@ -28,12 +28,6 @@ export class AuthState {
     constructor(
     ) { }
 
-    // @Selector()
-    // getUserName(state: AuthModel){
-    //     console.log(state.name)
-    //     return state.name;
-    // }
-
 
 
     @Action(AuthActions.getInputs)
