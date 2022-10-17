@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   createForm = new FormGroup({
     name: new FormControl(null),
     password: new FormControl(null),
-    isLoggedIn: new FormControl(false)
+    // isLoggedIn: new FormControl(false)
   });
 
   constructor(
@@ -31,18 +31,25 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.store.subscribe(res => {
+      console.log(res)
+    })
   }
 
 
   login() {
     const body = this.createForm.getRawValue();
     // console.log(body)
-    
     this.store.dispatch(new AuthActions.getInputs(body));
     // this.authFacade.login();
 
     this.user$.subscribe(res=>{
       // console.log(res, 'tt');
+    })
+
+    this.createForm.setValue({
+      name: '',
+      password: '',
     })
   }
   logout(){
