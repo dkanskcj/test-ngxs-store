@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     // this.authFacade.login();
 
     this.user$.subscribe(res=>{
-      // console.log(res, 'tt');
+      console.log(res, 'tt');
     })
 
     this.createForm.setValue({

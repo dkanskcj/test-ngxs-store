@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Action, Selector, State, StateContext, StateToken } from "@ngxs/store";
-import { Observable } from "rxjs";
-import { CommentService } from "src/app/service/comment/comment.service";
+import { Action, State, StateContext, StateToken } from "@ngxs/store";
 import { AuthActions } from "./auth.actions";
 
 
@@ -32,9 +30,6 @@ export class AuthState {
 
     @Action(AuthActions.getInputs)
     getInputs(state: StateContext<AuthModel>, formData: any) {
-        // if(AUTH_STATE_TOKEN){
-        //     console.log(AUTH_STATE_TOKEN)
-        // }
         if(formData.formData.name === 'dkanskcj' && formData.formData.password === '1234')
         {
             state.patchState({
