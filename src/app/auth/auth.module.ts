@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
-import { AuthState } from './state/auth.state';
 import { AuthFacade } from './state/auth.facade';
+import { AuthState } from './state/auth.state';
 import { LoggedInGuard } from './state/logged-in.guard';
-import { HttpClientModule } from '@angular/common/http';
 
 
 

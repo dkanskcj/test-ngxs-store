@@ -13,14 +13,14 @@ export class LoggedInGuard implements CanActivate {
   ) { }
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise <boolean> | boolean{
-  return this.authFacade.isLoggedIn$.pipe(map(isLoggedIn => {
-    if (!isLoggedIn) {
-      this.router.navigate(['/no-soup-for-you']);
-      return false;
-    }
-    return true;
-  }))
-}
-  
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    return this.authFacade.isLoggedIn$.pipe(map(isLoggedIn => {
+      if (!isLoggedIn) {
+        this.router.navigate(['/no-soup-for-you']);
+        return false;
+      }
+      return true;
+    }))
+  }
+
 }
